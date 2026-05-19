@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehta Properties — Mumbai Real Estate Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:#1a1a2e;background:#fff;}
+
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);padding:16px 60px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 20px rgba(0,0,0,0.08);z-index:100;backdrop-filter:blur(10px);}
+.logo-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#1a1a2e;}
+.logo-sub{font-size:10px;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{text-decoration:none;color:#4a4a6a;font-size:14px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:#c9a84c;}
+.nav-cta{background:#1a1a2e;color:#fff;padding:11px 24px;text-decoration:none;font-size:13px;font-weight:600;transition:background 0.2s;}
+.nav-cta:hover{background:#c9a84c;}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;}
+.hero-left{background:linear-gradient(160deg,#1a1a2e,#16213e 60%,#0f3460);padding:140px 60px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.hero-left::before{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:rgba(201,168,76,0.06);border-radius:50%;}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:#c9a84c;font-size:11px;font-weight:600;letter-spacing:3px;padding:7px 16px;margin-bottom:28px;width:fit-content;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,4vw,60px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:20px;}
+.hero h1 em{font-style:italic;color:#c9a84c;}
+.hero-desc{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:40px;max-width:420px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{background:#c9a84c;color:#1a1a2e;padding:15px 32px;text-decoration:none;font-weight:700;font-size:14px;transition:all 0.3s;display:inline-block;}
+.btn-gold:hover{background:#e0bb5f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4);}
+.btn-ghost{border:1px solid rgba(255,255,255,0.3);color:#fff;padding:15px 32px;text-decoration:none;font-weight:500;font-size:14px;transition:all 0.3s;display:inline-block;}
+.btn-ghost:hover{border-color:#c9a84c;color:#c9a84c;}
+.hero-stats{display:flex;gap:0;margin-top:48px;border-top:1px solid rgba(255,255,255,0.1);padding-top:32px;}
+.hstat{flex:1;}
+.hstat:not(:last-child){border-right:1px solid rgba(255,255,255,0.1);margin-right:24px;padding-right:24px;}
+.hstat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#c9a84c;}
+.hstat-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:4px;text-transform:uppercase;}
+
+.hero-right{background:#f8f5f0;padding:140px 50px 80px;display:flex;flex-direction:column;justify-content:center;}
+.feat-label{font-size:10px;font-weight:700;letter-spacing:4px;color:#c9a84c;margin-bottom:20px;text-transform:uppercase;}
+.prop-card{background:#fff;border:1px solid #e8e0d0;margin-bottom:16px;overflow:hidden;transition:all 0.3s;cursor:pointer;}
+.prop-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.1);transform:translateY(-3px);}
+.prop-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;}
+.prop-img.dark{background:linear-gradient(135deg,#1a1a2e,#0f3460);}
+.prop-img.green{background:linear-gradient(135deg,#1a3a12,#2d4a22);}
+.prop-badge{position:absolute;top:12px;left:12px;background:#c9a84c;color:#1a1a2e;font-size:10px;font-weight:700;padding:4px 10px;letter-spacing:1px;}
+.prop-badge.rent{background:#1a1a2e;color:#fff;}
+.prop-info{padding:16px 18px;}
+.prop-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:3px;}
+.prop-loc{font-size:12px;color:#8a8a9a;margin-bottom:8px;}
+.prop-price{font-size:17px;font-weight:700;color:#c9a84c;}
+.prop-price span{font-size:12px;font-weight:400;color:#8a8a9a;}
+.prop-feats{display:flex;gap:8px;margin-top:8px;}
+.pf{font-size:11px;color:#6a6a8a;background:#f8f5f0;padding:3px 10px;border-radius:20px;}
+
+section{padding:90px 60px;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:4px;color:#c9a84c;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;color:#1a1a2e;line-height:1.15;margin-bottom:16px;}
+.sec-title em{font-style:italic;color:#c9a84c;}
+.sec-desc{font-size:15px;color:#6a6a8a;line-height:1.9;max-width:520px;}
+
+/* SERVICES */
+#services{background:#fff;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;}
+.svc{background:#f8f5f0;padding:36px 28px;position:relative;overflow:hidden;transition:all 0.35s;}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#c9a84c;transform:scaleX(0);transition:transform 0.35s;}
+.svc:hover{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.08);}
+.svc:hover::after{transform:scaleX(1);}
+.svc-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:#e8e0d0;line-height:1;margin-bottom:16px;}
+.svc-icon{font-size:26px;margin-bottom:12px;display:block;}
+.svc-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#1a1a2e;margin-bottom:10px;}
+.svc-desc{font-size:13px;color:#6a6a8a;line-height:1.8;}
+
+/* PROPERTIES */
+#properties{background:#f8f5f0;}
+.props-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;}
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pc{background:#fff;overflow:hidden;transition:all 0.35s;border:1px solid #ede8e0;}
+.pc:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,0.1);}
+.pc-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+.pc-img.c1{background:linear-gradient(135deg,#1a1a2e,#16213e);}
+.pc-img.c2{background:linear-gradient(135deg,#1a3a12,#2d4a22);}
+.pc-img.c3{background:linear-gradient(135deg,#3a1a1a,#2e1010);}
+.pc-tag{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;padding:5px 12px;letter-spacing:1px;}
+.pc-tag.sale{background:#c9a84c;color:#1a1a2e;}
+.pc-tag.rent{background:#1a1a2e;color:#fff;}
+.pc-body{padding:22px;}
+.pc-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:5px;}
+.pc-loc{font-size:12px;color:#8a8a9a;margin-bottom:12px;}
+.pc-line{height:1px;background:#ede8e0;margin-bottom:12px;}
+.pc-row{display:flex;justify-content:space-between;align-items:center;}
+.pc-price{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;color:#c9a84c;}
+.pc-ff{font-size:11px;color:#6a6a8a;}
+.pc-link{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:#1a1a2e;letter-spacing:1px;text-decoration:none;border-bottom:1px solid #c9a84c;padding-bottom:2px;}
+
+/* WHY */
+#why{background:#1a1a2e;}
+#why .sec-title{color:#fff;}
+#why .sec-desc{color:rgba(255,255,255,0.5);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px;align-items:center;}
+.why-pts{display:flex;flex-direction:column;gap:28px;}
+.wp{display:flex;gap:20px;align-items:flex-start;}
+.wp-n{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:#c9a84c;line-height:1;flex-shrink:0;width:44px;}
+.wp-c h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px;}
+.wp-c p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;}
+.why-metrics{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:36px;display:flex;flex-direction:column;gap:20px;}
+.metric{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.metric:last-child{border-bottom:none;padding-bottom:0;}
+.m-label{font-size:13px;color:rgba(255,255,255,0.5);}
+.m-bar{flex:1;height:3px;background:rgba(255,255,255,0.06);margin:0 20px;border-radius:2px;overflow:hidden;}
+.m-fill{height:100%;background:#c9a84c;border-radius:2px;}
+.m-val{font-size:13px;font-weight:700;color:#c9a84c;white-space:nowrap;}
+
+/* TESTIMONIALS */
+#testimonials{background:#fff;}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.tc{border:1px solid #ede8e0;padding:32px;transition:all 0.3s;}
+.tc:hover{border-color:#c9a84c;box-shadow:0 12px 40px rgba(0,0,0,0.06);}
+.tc-q{font-size:40px;color:#f0e8d8;font-family:'Playfair Display',serif;line-height:1;margin-bottom:10px;}
+.tc p{font-size:14px;color:#6a6a8a;line-height:1.85;font-style:italic;margin-bottom:24px;}
+.tc-auth{display:flex;align-items:center;gap:14px;}
+.tc-av{width:42px;height:42px;background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#c9a84c;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;}
+.tc-name{font-size:14px;font-weight:700;color:#1a1a2e;}
+.tc-role{font-size:11px;color:#8a8a9a;margin-top:2px;}
+
+/* CONTACT */
+#contact{background:#f8f5f0;}
+.con-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;margin-top:56px;}
+.con-info{display:flex;flex-direction:column;}
+.ci{padding:22px 0;border-bottom:1px solid #e8e0d0;display:flex;gap:16px;align-items:flex-start;}
+.ci-icon{width:40px;height:40px;background:#1a1a2e;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ci h4{font-size:11px;font-weight:600;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:5px;}
+.ci p{font-size:14px;color:#4a4a6a;line-height:1.7;}
+.wa{display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:#fff;padding:14px;text-decoration:none;font-weight:600;font-size:14px;margin-top:24px;transition:background 0.2s;}
+.wa:hover{background:#22c55e;}
+.con-form{background:#fff;padding:40px;border:1px solid #ede8e0;}
+.cf-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:24px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:10px;font-weight:600;letter-spacing:2px;color:#8a8a9a;text-transform:uppercase;margin-bottom:7px;}
+.fg input,.fg select,.fg textarea{width:100%;border:1px solid #e8e0d0;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:#1a1a2e;outline:none;transition:border-color 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#c9a84c;}
+.fg textarea{height:85px;resize:none;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sub{width:100%;background:#1a1a2e;color:#fff;border:none;padding:15px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:background 0.3s;margin-top:6px;}
+.sub:hover{background:#c9a84c;color:#1a1a2e;}
+.wa2{display:flex;align-items:center;justify-content:center;gap:10px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;padding:13px;text-decoration:none;font-weight:600;font-size:14px;margin-top:10px;transition:all 0.2s;}
+.wa2:hover{background:#25d366;color:#fff;border-color:#25d366;}
+
+footer{background:#0f0f1a;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.fl{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#fff;}
+.fl span{color:#c9a84c;}
+footer p{font-size:12px;color:#4a4a6a;}
+footer a{color:#c9a84c;text-decoration:none;}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:120px 24px 60px;}
+  section{padding:60px 20px;}
+  .svc-grid,.props-grid,.tc-grid{grid-template-columns:1fr;}
+  .why-grid,.con-grid{grid-template-columns:1fr;}
+  .fg-row{grid-template-columns:1fr;}
+  .props-hdr{flex-direction:column;gap:16px;align-items:flex-start;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="logo-name">Mehta Properties</div>
+    <div class="logo-sub">Mumbai Real Estate</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="h-badge">✦ MUMBAI'S TRUSTED PROPERTY CONSULTANT</div>
+    <h1>Find Your<br>Dream Home<br>in <em>Mumbai.</em></h1>
+    <p class="hero-desc">15 years of expertise across Mumbai's real estate market. From first-time buyers to seasoned investors — we find the right property at the right price.</p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn-gold">View Properties</a>
+      <a href="#contact" class="btn-ghost">Free Consultation</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">850+</div><div class="hstat-label">Properties Sold</div></div>
+      <div class="hstat"><div class="hstat-num">15</div><div class="hstat-label">Years Experience</div></div>
+      <div class="hstat"><div class="hstat-num">98%</div><div class="hstat-label">Satisfaction</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="feat-label">Featured Listings</div>
+    <div class="prop-card">
+      <div class="prop-img dark">🏙️<span class="prop-badge">FOR SALE</span></div>
+      <div class="prop-info">
+        <div class="prop-name">Skyline Residency</div>
+        <div class="prop-loc">📍 Dadar West, Mumbai</div>
+        <div class="prop-price">₹1.8 Cr <span>onwards</span></div>
+        <div class="prop-feats"><span class="pf">3 BHK</span><span class="pf">1,200 sq ft</span><span class="pf">Sea View</span></div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img green">🌿<span class="prop-badge rent">FOR RENT</span></div>
+      <div class="prop-info">
+        <div class="prop-name">Green Valley Apartments</div>
+        <div class="prop-loc">📍 Sion, Mumbai</div>
+        <div class="prop-price">₹45,000 <span>/month</span></div>
+        <div class="prop-feats"><span class="pf">2 BHK</span><span class="pf">950 sq ft</span><span class="pf">Furnished</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="sec-inner">
+    <div class="sec-tag">What We Offer</div>
+    <h2 class="sec-title">Complete Real Estate <em>Solutions</em></h2>
+    <p class="sec-desc">From finding the perfect home to handling all paperwork — we manage the entire process so you don't have to.</p>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-num">01</div><span class="svc-icon">🏠</span><div class="svc-title">Residential Sales</div><p class="svc-desc">Buy or sell flats, bungalows and apartments across Mumbai with expert guidance on pricing, negotiation and legal documentation.</p></div>
+      <div class="svc"><div class="svc-num">02</div><span class="svc-icon">🔑</span><div class="svc-title">Rental Services</div><p class="svc-desc">Find verified tenants or the perfect rental property. We handle agreements, background checks and move-in coordination.</p></div>
+      <div class="svc"><div class="svc-num">03</div><span class="svc-icon">📈</span><div class="svc-title">Investment Advisory</div><p class="svc-desc">Identify high-ROI investment properties in Mumbai's growing localities. Data-driven advice for maximum returns.</p></div>
+      <div class="svc"><div class="svc-num">04</div><span class="svc-icon">🏢</span><div class="svc-title">Commercial Properties</div><p class="svc-desc">Office spaces, shops and commercial units for sale or rent. We understand Mumbai's commercial real estate deeply.</p></div>
+      <div class="svc"><div class="svc-num">05</div><span class="svc-icon">📋</span><div class="svc-title">Legal & Documentation</div><p class="svc-desc">Complete assistance with property registration, RERA compliance, home loans and all legal paperwork handled smoothly.</p></div>
+      <div class="svc"><div class="svc-num">06</div><span class="svc-icon">🔍</span><div class="svc-title">Property Valuation</div><p class="svc-desc">Get accurate market valuations before buying or selling. Know exactly what your property is worth today.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="properties">
+  <div class="sec-inner">
+    <div class="props-hdr">
+      <div><div class="sec-tag">Current Listings</div><h2 class="sec-title" style="margin-bottom:0">Featured <em>Properties</em></h2></div>
+      <a href="#contact" class="btn-gold">View All →</a>
+    </div>
+    <div class="props-grid">
+      <div class="pc">
+        <div class="pc-img c1">🏙️<span class="pc-tag sale">FOR SALE</span></div>
+        <div class="pc-body"><div class="pc-name">Skyline Residency</div><div class="pc-loc">📍 Dadar West, Mumbai</div><div class="pc-line"></div><div class="pc-row"><div class="pc-price">₹1.8 Cr</div><div class="pc-ff">3 BHK · 1200 sqft</div></div><a href="#contact" class="pc-link">Enquire Now →</a></div>
+      </div>
+      <div class="pc">
+        <div class="pc-img c2">🌿<span class="pc-tag rent">FOR RENT</span></div>
+        <div class="pc-body"><div class="pc-name">Green Valley Apartments</div><div class="pc-loc">📍 Sion, Mumbai</div><div class="pc-line"></div><div class="pc-row"><div class="pc-price">₹45K/mo</div><div class="pc-ff">2 BHK · 950 sqft</div></div><a href="#contact" class="pc-link">Enquire Now →</a></div>
+      </div>
+      <div class="pc">
+        <div class="pc-img c3">🏢<span class="pc-tag sale">FOR SALE</span></div>
+        <div class="pc-body"><div class="pc-name">Business Hub Office</div><div class="pc-loc">📍 Mahim, Mumbai</div><div class="pc-line"></div><div class="pc-row"><div class="pc-price">₹95 Lakh</div><div class="pc-ff">Commercial · 600 sqft</div></div><a href="#contact" class="pc-link">Enquire Now →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="sec-inner">
+    <div class="sec-tag">Why Choose Us</div>
+    <h2 class="sec-title">Mumbai's Most <em>Trusted</em> Consultant</h2>
+    <div class="why-grid">
+      <div class="why-pts">
+        <div class="wp"><div class="wp-n">01</div><div class="wp-c"><h4>15 Years of Local Expertise</h4><p>Deep knowledge of every Mumbai locality. We know where value lies before the market does.</p></div></div>
+        <div class="wp"><div class="wp-n">02</div><div class="wp-c"><h4>Zero Hidden Charges</h4><p>Transparent pricing from day one. No surprise fees, no commissions you didn't agree to.</p></div></div>
+        <div class="wp"><div class="wp-n">03</div><div class="wp-c"><h4>End to End Support</h4><p>From first visit to registration — we handle everything. You just choose the property.</p></div></div>
+        <div class="wp"><div class="wp-n">04</div><div class="wp-c"><h4>RERA Registered</h4><p>Fully compliant with Maharashtra RERA. Buy with complete legal confidence and protection.</p></div></div>
+      </div>
+      <div class="why-metrics">
+        <div class="metric"><span class="m-label">Client Satisfaction</span><div class="m-bar"><div class="m-fill" style="width:98%"></div></div><span class="m-val">98%</span></div>
+        <div class="metric"><span class="m-label">On-Time Delivery</span><div class="m-bar"><div class="m-fill" style="width:95%"></div></div><span class="m-val">95%</span></div>
+        <div class="metric"><span class="m-label">Repeat Clients</span><div class="m-bar"><div class="m-fill" style="width:72%"></div></div><span class="m-val">72%</span></div>
+        <div class="metric"><span class="m-label">Negotiated Below Ask</span><div class="m-bar"><div class="m-fill" style="width:85%"></div></div><span class="m-val">85%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="sec-inner">
+    <div class="sec-tag">Client Stories</div>
+    <h2 class="sec-title">What Our Clients <em>Say</em></h2>
+    <div class="tc-grid">
+      <div class="tc"><div class="tc-q">"</div><p>Mehta sir found us our dream 3BHK in Dadar within 3 weeks. He negotiated ₹12 lakhs below asking price. Exceptional service and genuine advice throughout.</p><div class="tc-auth"><div class="tc-av">R</div><div><div class="tc-name">Rajesh Kulkarni</div><div class="tc-role">Purchased 3BHK — Dadar West</div></div></div></div>
+      <div class="tc"><div class="tc-q">"</div><p>As a first-time buyer I was nervous about everything. The team guided me through every step — from loan to registration. Couldn't have done it without them.</p><div class="tc-auth"><div class="tc-av">P</div><div><div class="tc-name">Priya Nair</div><div class="tc-role">First Home Buyer — Sion</div></div></div></div>
+      <div class="tc"><div class="tc-q">"</div><p>I have bought and sold 3 properties through Mehta Properties over 8 years. Every time the experience is seamless. They understand Mumbai's market like no one else.</p><div class="tc-auth"><div class="tc-av">A</div><div><div class="tc-name">Anil Deshmukh</div><div class="tc-role">Property Investor — Multiple Projects</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-inner">
+    <div class="sec-tag">Get In Touch</div>
+    <h2 class="sec-title">Book Your Free <em>Consultation</em></h2>
+    <p class="sec-desc">Tell us what you're looking for. We'll find it.</p>
+    <div class="con-grid">
+      <div class="con-info">
+        <div class="ci"><div class="ci-icon">📍</div><div><h4>Office</h4><p>Near Dadar Station,<br>Dadar West, Mumbai — 400028</p></div></div>
+        <div class="ci"><div class="ci-icon">📞</div><div><h4>Phone</h4><p>+91 98XXXXXXXX</p></div></div>
+        <div class="ci"><div class="ci-icon">🕐</div><div><h4>Hours</h4><p>Mon — Sat: 9 AM to 7 PM</p></div></div>
+        <div class="ci"><div class="ci-icon">📧</div><div><h4>Email</h4><p>info@mehtaproperties.in</p></div></div>
+        <a href="https://wa.me/9800000000" class="wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Now
+        </a>
+      </div>
+      <div class="con-form">
+        <div class="cf-title">Request a Callback</div>
+        <div class="fg-row">
+          <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="fg"><label>I Am Looking To</label><select><option>Select</option><option>Buy a Property</option><option>Sell My Property</option><option>Rent a Property</option><option>List for Rent</option><option>Investment Advice</option></select></div>
+        <div class="fg-row">
+          <div class="fg"><label>Budget</label><input type="text" placeholder="e.g. ₹50L — ₹1Cr"></div>
+          <div class="fg"><label>Preferred Area</label><input type="text" placeholder="e.g. Dadar, Sion"></div>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Tell us more about what you're looking for..."></textarea></div>
+        <button class="sub" onclick="alert('Thank you! Mr. Mehta will call you within 2 hours.')">Send Enquiry →</button>
+        <a href="https://wa.me/9800000000" class="wa2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quick WhatsApp Enquiry
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Mehta<span>Properties</span></div>
+  <p>© 2026 Mehta Properties Mumbai. All rights reserved.</p>
+  <p>Designed by <a href="https://projectportfoleo.netlify.app/">Tanmay Vane</a></p>
+</footer>
+
+</body>
+</html>
